@@ -5,10 +5,10 @@
 
 REQUIREMENTS:
 - Installed and configured AfterLogic WebMail
-- ownCloud version 8 or higher
+- ownCloud version 9 or higher
 
 INSTALL:
-- Unpack the AfterLogic WebMail application package in the apps directory of your OwnCloud instance
+- Unpack the AfterLogic WebMail application package in the apps directory of your ownCloud instance
 
 CONFIGURATION:
 

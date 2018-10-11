@@ -2,7 +2,7 @@
 
 /**
  * ownCloud - AfterLogic WebMail
- * @copyright 2002-2017 AfterLogic Corp.
+ * @copyright 2002-2018 AfterLogic Corp.
  */
 
 /**

@@ -2,17 +2,16 @@
 
 /**
  * ownCloud - AfterLogic WebMail
- * @copyright 2002-2017 AfterLogic Corp.
+ * @copyright 2002-2018 AfterLogic Corp.
  */
-
 OCP\User::checkLoggedIn();
 OCP\App::checkAppEnabled('afterlogic');
-OCP\App::setActiveNavigationEntry('afterlogic_index');
+\OC::$server->getNavigationManager()->setActiveEntry('afterlogic_index');
 
-$sUrl = trim(OCP\Config::getAppValue('afterlogic', 'afterlogic-url', ''));
-$sPath = trim(OCP\Config::getAppValue('afterlogic', 'afterlogic-path', ''));
+$sUrl = trim(\OC::$server->getConfig()->getAppValue('afterlogic', 'afterlogic-url', ''));
+$sPath = trim(\OC::$server->getConfig()->getAppValue('afterlogic', 'afterlogic-path', ''));
 
-if ('' === $sUrl || '' === $sPath)
+if ('' === $sUrl)
 {
 	$oTemplate = new OCP\Template('afterlogic', 'not-configured', 'user');
 }
@@ -20,9 +19,9 @@ else
 {
 	$sUser = OCP\User::getUser();
 
-	$sEmail = OCP\Config::getUserValue($sUser, 'afterlogic', 'afterlogic-email', '');
-	$sLogin = OCP\Config::getUserValue($sUser, 'afterlogic', 'afterlogic-login', '');
-	$sPassword = OCP\Config::getUserValue($sUser, 'afterlogic', 'afterlogic-password', '');
+	$sEmail = \OC::$server->getConfig()->getUserValue($sUser, 'afterlogic', 'afterlogic-email', '');
+	$sLogin = \OC::$server->getConfig()->getUserValue($sUser, 'afterlogic', 'afterlogic-login', '');
+	$sPassword = \OC::$server->getConfig()->getUserValue($sUser, 'afterlogic', 'afterlogic-password', '');
 
 	include_once OC_App::getAppPath('afterlogic').'/functions.php';
 	
@@ -34,9 +33,12 @@ else
 	{
 		$sUrl .= '/';
 	}
-	
-	$sResultUrl = empty($sSsoHash) ? $sUrl.'?sso' : $sUrl.'?sso&hash='.$sSsoHash;
 
+	if ('' === $sPath) {
+	    $sResultUrl = $sUrl.'?postlogin&Email='.urlencode($sEmail).(($sLogin==='')?'':'&Login='.urlencode($sLogin)).'&Password='.urlencode($sPassword);
+	} else {
+	    $sResultUrl = empty($sSsoHash) ? $sUrl.'?sso' : $sUrl.'?sso&hash='.$sSsoHash;
+	}	
 	$oTemplate = new OCP\Template('afterlogic', 'iframe', 'user');
 	$oTemplate->assign('afterlogic-url', $sResultUrl);
 }

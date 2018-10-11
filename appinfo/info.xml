@@ -3,7 +3,7 @@
 	<id>afterlogic</id>
 	<name>AfterLogic</name>
 	<description>AfterLogic WebMail</description>
-	<version>1.1.2</version>
+	<version>1.2.1</version>
 	<licence>AGPL</licence>
 	<author>AfterLogic Corp.</author>
 	<summary>Integration with AfterLogic WebMail client</summary>
@@ -13,11 +13,10 @@
 	    <developer>https://afterlogic.com/docs/webmail-lite-8</developer>
 	</documentation>
 	<category>collaboration</category>
-	<screenshot>https://camo.githubusercontent.com/e03cf6b43cf4c58f253d419da5c72ee2c42e3aaf/68747470733a2f2f61667465726c6f6769632e6f72672f696d616765732f70726f64756374732f776d6c382f61667465726c6f6769632d7765626d61696c2d6c6974652d382d6d6573736167652d6c6973742e706e67</screenshot>
-	<website>https://afterlogic.org/webmail-lite</website>
 	<bugs>https://github.com/afterlogic/owncloud-connector/issues</bugs>
-	<repository type="git">https://github.com/afterlogic/owncloud-connector.git</repository>
+	<screenshot>https://afterlogic.org/images/products/wml8/screen1.png</screenshot>
+	<website>https://afterlogic.org/webmail-lite</website>
         <dependencies>
-                <owncloud min-version="8.2" max-version="10.0"/>
+            <owncloud min-version="10.0" max-version="10.0"/>
         </dependencies>
 </info>
