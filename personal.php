@@ -1,8 +1,8 @@
 <?php
 
 /**
- * ownCloud - AfterLogic WebMail
- * @copyright 2002-2018 AfterLogic Corp.
+ * ownCloud - Afterlogic WebMail
+ * @copyright 2002-2020 Afterlogic Corp.
  */
 
 OCP\User::checkLoggedIn();
@@ -25,7 +25,6 @@ else
 	$oTemplate = new OCP\Template('afterlogic', 'personal');
 
 	$sEmail = \OC::$server->getConfig()->getUserValue($sUser, 'afterlogic', 'afterlogic-email', '');
-	$sLogin = \OC::$server->getConfig()->getUserValue($sUser, 'afterlogic', 'afterlogic-login', '');
 
 	include_once OC_App::getAppPath('afterlogic').'/functions.php';
 	
@@ -33,7 +32,6 @@ else
 	$sPassword = aftDecodePassword($sPassword, md5($sEmail));
 
 	$oTemplate->assign('afterlogic-email', $sEmail);
-	$oTemplate->assign('afterlogic-login', $sLogin);
 	$oTemplate->assign('afterlogic-password', 0 === strlen($sPassword) ? '' : '******');
 }
 

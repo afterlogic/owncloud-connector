@@ -1,8 +1,8 @@
 <?php
 
 /**
- * ownCloud - AfterLogic WebMail
- * @copyright 2002-2018 AfterLogic Corp.
+ * ownCloud - Afterlogic WebMail
+ * @copyright 2002-2020 Afterlogic Corp.
  */
 
 /**

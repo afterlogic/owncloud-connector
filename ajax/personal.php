@@ -1,23 +1,20 @@
 <?php
 
 /**
- * ownCloud - AfterLogic WebMail
- * @copyright 2002-2018 AfterLogic Corp.
+ * ownCloud - Afterlogic WebMail
+ * @copyright 2002-2020 Afterlogic Corp.
  */
 
 \OC_JSON::checkLoggedIn();
 \OC_JSON::checkAppEnabled('afterlogic');
 \OC_JSON::callCheck();
 
-if (isset($_POST['appname'], $_POST['afterlogic-password'], $_POST['afterlogic-email'], $_POST['afterlogic-login']) && 'afterlogic' === $_POST['appname'])
+if (isset($_POST['appname'], $_POST['afterlogic-password'], $_POST['afterlogic-email']) && 'afterlogic' === $_POST['appname'])
 {
 	$sUser = OCP\User::getUser();
 
 	$sEmail = $_POST['afterlogic-email'];
-	$sLogin = $_POST['afterlogic-login'];
-
 	\OC::$server->getConfig()->setUserValue($sUser, 'afterlogic', 'afterlogic-email', $sEmail);
-	\OC::$server->getConfig()->setUserValue($sUser, 'afterlogic', 'afterlogic-login', $sLogin);
 
 	$sPass = $_POST['afterlogic-password'];
 	if ('******' !== $sPass)

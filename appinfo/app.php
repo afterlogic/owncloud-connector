@@ -1,8 +1,8 @@
 <?php
 
 /**
- * ownCloud - AfterLogic WebMail
- * @copyright 2002-2018 AfterLogic Corp.
+ * ownCloud - Afterlogic WebMail
+ * @copyright 2002-2020 Afterlogic Corp.
  */
 
 OCP\App::registerAdmin('afterlogic', 'admin');
@@ -11,7 +11,10 @@ OCP\App::registerPersonal('afterlogic', 'personal');
 $sUrl = trim(\OC::$server->getConfig()->getAppValue('afterlogic', 'afterlogic-url', ''));
 $sPath = trim(\OC::$server->getConfig()->getAppValue('afterlogic', 'afterlogic-path', ''));
 
+/*
 if (('' !== $sUrl && '' !== $sPath) || OC_User::isAdminUser(OC_User::getUser()))
+*/
+if ('' !== $sUrl || OC_User::isAdminUser(OC_User::getUser()))
 {
 	OCP\Util::addScript('afterlogic', 'afterlogic');
 
